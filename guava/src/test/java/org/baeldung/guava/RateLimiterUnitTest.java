@@ -67,11 +67,11 @@ public class RateLimiterUnitTest {
         RateLimiter rateLimiter = RateLimiter.create(1);
 
         //when
-        boolean result = rateLimiter.tryAcquire(2, 1, TimeUnit.SECONDS);
+        rateLimiter.acquire();
+        boolean result = rateLimiter.tryAcquire(2, 10, TimeUnit.MILLISECONDS);
 
         //then
         assertThat(result).isFalse();
-
     }
 
     private void doSomeLimitedOperation() {
